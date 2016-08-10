@@ -14,10 +14,12 @@ class patient extends base
         parent::__construct();
     }
 
-    public function list_all()
+    public function list_all($dato=null)
     {
+        $edad = (!empty($dato))? $dato : 50;
+        $sql = 'select * from patients where patient_age > '.$edad.' order by patient_age';
         $result_array = array();
-        $result = $this->db->query('select * from patients');
+        $result = $this->db->query($sql);
 
         return parent::result_array($result);
     }

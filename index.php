@@ -28,7 +28,9 @@ $patients = $patient_model->list_all();
 
         <p>
             <label for="patient_filter">Filter by Name</label>
-            <input type="text" name="patient_filter" />
+            <input type="text" name="patient_filter" id="filtro"/>
+            <label for="patient_filter_age">Filter age from</label>
+            <input type="text" name="patient_filter_age" id="filtro_edad"/>
         </p>
 
         <p>
@@ -41,18 +43,20 @@ $patients = $patient_model->list_all();
 
         <div class="row">
             <div class="col-xs-4">Name</div>
-            <div class="col-xs-4">Age</div>
+            <div class="col-xs-4 visible-lg-block">Age</div>
             <div class="col-xs-4">Phone</div>
         </div>
 
         <!-- Punto 4 Esconde la columna Age para móviles -->
+        <div id="all_pacientes">
         <?php foreach($patients as $patient): ?>
-            <div class="row">
-                <div class="col-xs-4"><?php echo $patient->patient_name; ?></div>
-                <div class="col-xs-4"><?php echo $patient->patient_age; ?></div>
+            <div class="row paciente">
+                <div class="col-xs-4 nombre"><?php echo $patient->patient_name; ?></div>
+                <div class="col-xs-4 visible-lg-block"><?php echo $patient->patient_age; ?></div>
                 <div class="col-xs-4"><?php echo $patient->patient_phone; ?></div>
             </div>
         <?php endforeach; ?>
+        </div>
 
     </div>
 
