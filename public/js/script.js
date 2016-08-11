@@ -7,12 +7,12 @@ $(function() {
     		$('.paciente').hide();
     		$('.nombre').each(function(index, element) {
 				 if($(element).text().toLowerCase().indexOf(nombre) !== -1){
-				 	return $(element).parent().show("slow");
+				 	return $(element).parent().show();
 				 }
 			});
     	}
     	if (!$(this).val()){
-    		$('.paciente').show("slow");
+    		$('.paciente').show();
     	}
     });
     $("#filtro_edad").keydown(function(event){
@@ -28,4 +28,17 @@ $(function() {
 			});
 	   	}
     });
+    mostrar_age(0);
 });
+
+function mostrar_age(dat)
+{
+    if (dat) {
+        $("#list_group_age").html('<a href="javascript:mostrar_age(0)"><span>Age:  </span><span>Patients quantity: </span></a>');
+        $(".list_group_age_dat").show();
+    }else{
+        $("#list_group_age").html('<a href="javascript:mostrar_age(1)"><span>Age:  </span><span>Patients quantity: </span></a>');
+        $(".list_group_age_dat").hide();
+
+    }
+}

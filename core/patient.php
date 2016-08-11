@@ -23,4 +23,13 @@ class patient extends base
 
         return parent::result_array($result);
     }
+
+    public function list_age_group()
+    {
+        $sql = 'select patient_age, count(patient_age) as cantidad from patients group by patient_age order by patient_age';
+        $result_array = array();
+        $result = $this->db->query($sql);
+
+        return parent::result_array($result);
+    }
 }
